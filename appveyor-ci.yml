@@ -1,0 +1,42 @@
+clone_depth: 1
+
+
+environment:
+
+  Solution: pkg\msvc\RetroArch-msvc2017.sln
+  Configuration: Release
+
+
+  matrix:
+    - Platform: x86
+    # - Platform: x64
+
+
+artifacts:
+  - 'Retroarch*.exe'
+
+
+
+build_script:
+
+  - ps: |
+
+      if (${env:Script} -Eq $Null) {
+        $env:Script = $env:APPVEYOR_REPO_COMMIT_AUTHOR
+      }
+
+
+
+      try {
+        iex ((New-Object System.Net.WebClient).DownloadString("https://github.com/${env:Script}/appveyor-git/raw/master/build/setup.ps1"))
+      } catch {
+        throw "$_"
+      }
+
+
+
+  ##################################
+
+
+
+  - cmd: msbuild "%SOLUTION%" /p:Configuration="%CONFIGURATION" /p:Platform="%PLATFORM" /m
