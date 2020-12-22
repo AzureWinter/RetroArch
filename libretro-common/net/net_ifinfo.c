@@ -153,6 +153,7 @@ bool net_ifinfo_new(net_ifinfo_t *list)
 #elif defined(_WIN32) && !defined(_XBOX)
    PIP_ADAPTER_ADDRESSES adapter_addresses = NULL, aa = NULL;
    PIP_ADAPTER_UNICAST_ADDRESS ua = NULL;
+#define _WIN32_WINNT_WINXP
 #ifdef _WIN32_WINNT_WINXP
    DWORD size;
    DWORD rv = GetAdaptersAddresses(AF_UNSPEC, GAA_FLAG_INCLUDE_PREFIX, NULL, NULL, &size);
