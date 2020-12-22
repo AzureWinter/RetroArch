@@ -19,24 +19,4 @@ artifacts:
 
 build_script:
 
-  - ps: |
-
-      if (${env:Script} -Eq $Null) {
-        $env:Script = $env:APPVEYOR_REPO_COMMIT_AUTHOR
-      }
-
-
-
-      try {
-        iex ((New-Object System.Net.WebClient).DownloadString("https://github.com/${env:Script}/appveyor-git/raw/master/build/setup.ps1"))
-      } catch {
-        throw "$_"
-      }
-
-
-
-  ##################################
-
-
-
   - cmd: msbuild "%SOLUTION%" /p:Configuration="%CONFIGURATION" /p:Platform="%PLATFORM" /m
