@@ -19,4 +19,4 @@ artifacts:
 
 build_script:
 
-  - cmd: msbuild "%SOLUTION%" /p:Configuration="%CONFIGURATION" /p:Platform="%PLATFORM" /m
+  - cmd: msbuild "%SOLUTION%" /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /m
