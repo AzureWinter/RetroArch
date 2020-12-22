@@ -3,7 +3,7 @@ clone_depth: 1
 
 environment:
 
-  Solution: pkg\msvc\RetroArch-msvc2017.sln
+  Solution: pkg\msvc\RetroArch-msvc2019.sln
   Configuration: Release
 
 
