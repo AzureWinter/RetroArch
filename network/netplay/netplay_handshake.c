@@ -52,9 +52,9 @@ struct password_buf_s
 struct info_buf_s
 {
    uint32_t cmd[2];
-   uint32_t content_crc;
    char core_name[NETPLAY_NICK_LEN];
    char core_version[NETPLAY_NICK_LEN];
+   uint32_t content_crc;
 };
 
 #define RECV(buf, sz) \
@@ -872,7 +872,7 @@ static bool netplay_handshake_pre_info(netplay_t *netplay,
       return true;
    }
 
-   RECV(&info_buf.content_crc, cmd_size)
+   RECV(&info_buf.core_name, cmd_size)
    {
       RARCH_ERR("Failed to receive netplay info payload.\n");
       return false;
