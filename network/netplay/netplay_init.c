@@ -217,7 +217,7 @@ static bool init_tcp_socket(netplay_t *netplay, void *direct_host,
 	{
 #ifdef HAVE_INET6
       if (!direct_host && (hints.ai_family == AF_INET6))
-         goto retry_inet4;
+         goto try_wildcard;
 #endif
       RARCH_ERR("Failed to set up netplay sockets.\n");
 	}
