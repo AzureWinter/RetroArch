@@ -134,6 +134,7 @@ static bool init_tcp_socket(netplay_t *netplay, void *direct_host,
       if (getaddrinfo_retro(server, port_buf, &hints, &res) != 0)
       {
 #ifdef HAVE_INET6
+		try_wildcard:
          if (!server)
          {
             /* Didn't work with IPv6, try wildcard */
@@ -212,8 +213,14 @@ static bool init_tcp_socket(netplay_t *netplay, void *direct_host,
    if (res && !direct_host)
       freeaddrinfo_retro(res);
 
-   if (!ret)
+	if (!ret)
+	{
+#ifdef HAVE_INET6
+      if (!direct_host && (hints.ai_family == AF_INET6))
+         goto retry_inet4;
+#endif
       RARCH_ERR("Failed to set up netplay sockets.\n");
+	}
 
    return ret;
 }
