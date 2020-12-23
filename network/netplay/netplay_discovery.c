@@ -248,7 +248,6 @@ bool netplay_lan_ad_server(netplay_t *netplay)
    struct timeval tmp_tv            = {0};
    unsigned k                       = 0;
    struct addrinfo *our_addr, hints = {0};
-   return false;
    struct string_list *subsystem    = path_get_subsystem_list();
 
    interfaces.entries               = NULL;
