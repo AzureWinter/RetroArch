@@ -108,8 +108,6 @@ uint32_t file_crc32(uint32_t crc, const char *path)
    unsigned char *buf = NULL;
    if (!path)
       return 0;
-   if (!(*path))
-      return 0;
 
    file = filestream_open(path, RETRO_VFS_FILE_ACCESS_READ, 0);
    if (!file)
