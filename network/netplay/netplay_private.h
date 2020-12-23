@@ -280,11 +280,11 @@ typedef struct netplay_input_state
    /* How many words of input data do we have? */
    uint32_t size;
 
-   /* The input data itself (note: should expand beyond 1 by overallocating). */
-   uint32_t data[1];
-
    /* Is this a buffer with real data? */
    bool used;
+
+   /* The input data itself (note: should expand beyond 1 by overallocating). */
+   uint32_t data[1];
 } *netplay_input_state_t;
 
 struct delta_frame

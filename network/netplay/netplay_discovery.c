@@ -52,7 +52,7 @@
 #include "netplay_private.h"
 
 #if defined(AF_INET6) && !defined(HAVE_SOCKET_LEGACY) && !defined(_3DS)
-#define HAVE_INET6 1
+//#define HAVE_INET6 1
 #endif
 
 struct ad_packet
@@ -248,6 +248,7 @@ bool netplay_lan_ad_server(netplay_t *netplay)
    struct timeval tmp_tv            = {0};
    unsigned k                       = 0;
    struct addrinfo *our_addr, hints = {0};
+   return false;
    struct string_list *subsystem    = path_get_subsystem_list();
 
    interfaces.entries               = NULL;

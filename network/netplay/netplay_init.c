@@ -34,7 +34,7 @@
 #include "../../retroarch.h"
 
 #if defined(AF_INET6) && !defined(HAVE_SOCKET_LEGACY) && !defined(_3DS)
-#define HAVE_INET6 1
+//#define HAVE_INET6 1
 #endif
 
 static int init_tcp_connection(const struct addrinfo *res,

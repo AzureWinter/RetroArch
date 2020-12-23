@@ -1,0 +1,23 @@
+clone_depth: 1
+
+
+environment:
+
+  Solution: pkg\msvc\RetroArch-msvc2019.sln
+  Configuration: Release
+
+
+  matrix:
+    - Platform: x86
+    # - Platform: x64
+
+
+artifacts:
+  - path: '**\*Retroarch*.exe'
+  - path: '**\*Retroarch*.pdb'
+
+
+
+build_script:
+
+  - cmd: msbuild "%SOLUTION%" /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /m
